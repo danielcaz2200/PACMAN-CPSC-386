@@ -20,11 +20,9 @@ class Maze:
         # the pellets and barriers
         self.pellets = Group()
         self.barriers = Group()
-        self.fruit = Group()
+        self.fruits = Group()
         self.currLife = life
         self.currMaze = self.initMap(life=self.currLife)
-
-        self.fruit = None
         self.spawnPts = dict()
 
     def initMap(self, life):
@@ -49,7 +47,7 @@ class Maze:
             self.pellets.add(
                 Pellet(game=self.game, x=col, y=row, type=elt))
         elif elt == 'fruit':
-            self.fruit.add(Fruit(game=self.game, x=col, y=row))
+            self.fruits.add(Fruit(game=self.game, x=col, y=row))
 
     def construct(self):
         for row_num in range(len(self.currMaze)):
@@ -57,3 +55,13 @@ class Maze:
             for col_num in range(strLen):
                 self.addElement(
                     elt=charMappings[self.currMaze[row_num][col_num]], col=col_num, row=row_num)
+
+    def reset(self):
+        self.barriers.empty()
+        self.pellets.empty()
+        self.initMap(life=0)
+
+    def update(self):
+        self.pellets.update()
+        self.barriers.update()
+        self.fruits.update()

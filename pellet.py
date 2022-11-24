@@ -16,3 +16,6 @@ class Pellet(Sprite):
 
     def draw(self):
         self.screen.blit(self.img, self.rect)
+
+    def update(self):
+        self.draw()

@@ -1,6 +1,7 @@
 import pygame
 from settings import Settings
 from maze import Maze
+import game_functions as gf
 
 
 class Game:
@@ -15,14 +16,15 @@ class Game:
         self.screenRect = self.screen.get_rect()
 
         # Set up game maze
-        self.maze = None
-        self.initialize_maze()
-
-    def initialize_maze(self):
         self.maze = Maze(self)
+
+        self.spawnPts = self.maze.spawnPts
 
     def play(self):
         while True:
+            gf.check_events(game=self, settings=self.settings)
+            self.screen.fill(self.settings.bg)
+            self.maze.update()
             pygame.display.flip()
 
 

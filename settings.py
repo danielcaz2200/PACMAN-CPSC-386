@@ -1,7 +1,7 @@
 class Settings():
     def __init__(self) -> None:
         """Setup the game settings"""
-        self.bg = (0, 0, 0)
+        self.bg = (50, 50, 50)
         self.screenWidth = 1200
         self.screenHeight = 800
         self.lives = 3
