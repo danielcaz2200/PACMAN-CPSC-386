@@ -5,6 +5,7 @@ class Settings():
         self.screenWidth = 1200
         self.screenHeight = 800
         self.lives = 3
+        self.fruitScore = 500
         self.pelletScore = None
         self.powerPelletScore = None
         self.initialize_pellet_scores()

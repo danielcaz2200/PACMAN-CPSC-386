@@ -1,9 +1,11 @@
 import pygame
 from pygame.sprite import Sprite, Group
 from pellet import Pellet
+from fruit import Fruit
+from barrier import Barrier
 
 charMappings = {
-    '@': 'wall',
+    '@': 'barrier',
     '.': 'pellet',
     '!': 'powerpellet',
     '%': 'fruit',
@@ -17,10 +19,12 @@ class Maze:
         # Create pygame sprite groups to represent
         # the pellets and barriers
         self.pellets = Group()
-        self.walls = Group()
+        self.barriers = Group()
+        self.fruit = Group()
         self.currLife = life
         self.currMaze = self.initMap(life=self.currLife)
 
+        self.fruit = None
         self.spawnPts = dict()
 
     def initMap(self, life):
@@ -36,12 +40,16 @@ class Maze:
         return maze
 
     def addElement(self, elt: str, col, row):
-        if elt == 'wall':
-            pass
+        if elt == 'barrier':
+            self.barriers.add(Barrier(game=self.game, x=col, y=row))
         elif elt == 'pellet':
-            self.pellets.add(Pellet(self.game, col, row, type=elt))
+            self.pellets.add(
+                Pellet(game=self.game, x=col, y=row, type=elt))
         elif elt == 'powerpellet':
-            self.pellets.add(Pellet(self.game, col, row, type=elt))
+            self.pellets.add(
+                Pellet(game=self.game, x=col, y=row, type=elt))
+        elif elt == 'fruit':
+            self.fruit.add(Fruit(game=self.game, x=col, y=row))
 
     def construct(self):
         for row_num in range(len(self.currMaze)):
