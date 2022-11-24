@@ -3,11 +3,14 @@ from pygame.sprite import Sprite
 
 
 class Barrier(Sprite):
-    def __init__(self, game, x, y, size=32):
+    def __init__(self, game, x, y):
         super().__init__()
-        self.image = pygame.Surface((size, size))
+        self.size = 32
+        self.image = pygame.Surface((self.size, self.size))
         self.image.fill((0, 50, 255))
-        self.rect = self.image.get_rect(topleft=(x, y))
+        self.rect = self.image.get_rect()
+        self.rect.left = x * self.rect.width
+        self.rect.top = y * self.rect.height
         self.screen = game.screen
 
     def draw(self):

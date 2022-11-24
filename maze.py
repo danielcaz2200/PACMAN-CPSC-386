@@ -12,7 +12,9 @@ charMappings = {
     'P': 'pacman',
     ' ': 'space',
     '\n': 'newline',
-    '-': 'spawn'
+    '-': 'spawn',
+    '1': 'portal1',
+    '2': 'portal2'
 }
 
 
@@ -26,7 +28,7 @@ class Maze:
         self.fruits = Group()
         self.currLife = life
         self.currMaze = self.initMap(life=self.currLife)
-        self.spawnPts = dict()
+        self.locations = dict()
         self.construct()
 
     def initMap(self, life):
@@ -51,8 +53,15 @@ class Maze:
                 Pellet(game=self.game, x=col, y=row, type=elt))
         elif elt == 'fruit':
             self.fruits.add(Fruit(game=self.game, x=col, y=row))
-        else:
-            pass
+        elif elt == 'portal1':
+            self.locations['portal1'] = (col, row)
+            print(self.locations['portal1'])
+        elif elt == 'portal2':
+            self.locations['portal2'] = (col, row)
+            print(self.locations['portal2'])
+        elif elt == 'pacman':
+            self.locations['pacman'] = (col, row)
+            print(self.locations['pacman'])
 
     def construct(self):
         for row_num in range(len(self.currMaze)):

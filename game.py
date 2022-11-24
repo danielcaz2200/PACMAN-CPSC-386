@@ -18,7 +18,7 @@ class Game:
         # Set up game maze
         self.maze = Maze(self)
 
-        self.spawnPts = self.maze.spawnPts
+        self.locations = self.maze.locations
 
     def play(self):
         while True:
