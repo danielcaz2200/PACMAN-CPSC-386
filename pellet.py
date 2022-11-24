@@ -4,7 +4,7 @@ import pygame as pg
 
 class Pellet(Sprite):
     def __init__(self, game, x, y, type: str):
-        super().__init__(self)
+        super().__init__()
         self.screen = game.screen
         self.pts = game.settings.pelletScore
         if type == 'pellet':

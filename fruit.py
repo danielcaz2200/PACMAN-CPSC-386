@@ -4,7 +4,7 @@ import pygame as pg
 
 class Fruit(Sprite):
     def __init__(self, game, x, y):
-        super().__init__(self)
+        super().__init__()
         self.screen = game.screen
         self.pts = game.settings.fruitScore
         self.img = pg.image.load('images/fruit.png')

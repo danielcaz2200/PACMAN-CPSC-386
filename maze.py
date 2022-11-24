@@ -10,6 +10,9 @@ charMappings = {
     '!': 'powerpellet',
     '%': 'fruit',
     'P': 'pacman',
+    ' ': 'space',
+    '\n': 'newline',
+    '-': 'spawn'
 }
 
 
@@ -24,6 +27,7 @@ class Maze:
         self.currLife = life
         self.currMaze = self.initMap(life=self.currLife)
         self.spawnPts = dict()
+        self.construct()
 
     def initMap(self, life):
         # Life indicates what life we are on, and what
@@ -33,7 +37,6 @@ class Maze:
             rows = fp.readlines()
             for currentLine in rows:
                 # REMOVE NEWLINES FROM THE LIST
-                currentLine.replace('\n', '')
                 maze.append(currentLine)
         return maze
 
@@ -48,6 +51,8 @@ class Maze:
                 Pellet(game=self.game, x=col, y=row, type=elt))
         elif elt == 'fruit':
             self.fruits.add(Fruit(game=self.game, x=col, y=row))
+        else:
+            pass
 
     def construct(self):
         for row_num in range(len(self.currMaze)):
