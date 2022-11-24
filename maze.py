@@ -1,6 +1,6 @@
 import pygame
 from pygame.sprite import Sprite, Group
-from pellets import Pellet
+from pellet import Pellet
 
 charMappings = {
     '@': 'wall',
