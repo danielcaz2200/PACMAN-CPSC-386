@@ -39,7 +39,9 @@ class Maze:
         if elt == 'wall':
             pass
         elif elt == 'pellet':
-            self.pellets.add(Pellet(self.game, col, row))
+            self.pellets.add(Pellet(self.game, col, row, type=elt))
+        elif elt == 'powerpellet':
+            self.pellets.add(Pellet(self.game, col, row, type=elt))
 
     def construct(self):
         for row_num in range(len(self.currMaze)):

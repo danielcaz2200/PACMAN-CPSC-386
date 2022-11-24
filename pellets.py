@@ -7,9 +7,9 @@ class Pellet(Sprite):
         super().__init__(self)
         self.screen = game.screen
         self.pts = game.settings.pelletScore
-        if type == 'smallpellet':
+        if type == 'pellet':
             self.img = pg.image.load('images/pellet.png')
-        else:
+        elif type == 'powerpellet':
             self.img = pg.image.load('images/powerpellet.png')
         self.rect = self.img.get_rect()
         self.rect.left, self.rect.top = x * self.rect.width, y * self.rect.height
