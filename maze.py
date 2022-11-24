@@ -35,11 +35,15 @@ class Maze:
                 maze.append(currentLine)
         return maze
 
-    def addElement(self, elt: str):
-        pass
+    def addElement(self, elt: str, col, row):
+        if elt == 'wall':
+            pass
+        elif elt == 'pellet':
+            self.pellets.add(Pellet(self.game, col, row))
 
     def construct(self):
         for row_num in range(len(self.currMaze)):
             strLen = len(self.currMaze[row_num])
             for col_num in range(strLen):
-                self.addElement(charMappings[self.currMaze[row_num][col_num]])
+                self.addElement(
+                    elt=charMappings[self.currMaze[row_num][col_num]], col=col_num, row=row_num)
