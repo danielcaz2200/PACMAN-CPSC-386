@@ -3,6 +3,7 @@ import game_functions as gf
 from vector import Vector as Vec
 from pygame.sprite import Sprite
 from timer import Timer
+from menus import GameController
 
 
 class Pacman(Sprite):
@@ -16,11 +17,7 @@ class Pacman(Sprite):
 
         self.img = pg.image.load('images/pacman_0.png')
         self.rect = self.img.get_rect()
-        # self.startx = location[0]
-        # self.starty = location[1]
         self.pos = Vec(location[0], location[1])
-        # self.x = location[0]
-        # self.y = location[1]
         self.dir = 'STOP'
         self.screen = game.screen
         self.speed = self.settings.playerSpeed
@@ -28,6 +25,7 @@ class Pacman(Sprite):
         self.rect.top = self.pos.y * self.rect.height
         self.last = pg.time.get_ticks()
         self.delay = 200
+        self.displayScore = GameController()
 
         pacman_frames_r = [pg.image.load(
             f'images/pacman_{i}.png') for i in range(3)]
@@ -98,6 +96,8 @@ class Pacman(Sprite):
             self.checkCollisions()
         self.rect.left = self.pos.x * self.rect.width
         self.rect.top = self.pos.y * self.rect.height
+        self.displayScore.draw_text('SCORE ' + str(self.game.score).zfill(8), 20, 145, 960)
+
         self.draw()
 
     # def checkWallCollisions(self, prev):
