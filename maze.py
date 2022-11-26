@@ -3,18 +3,19 @@ from pygame.sprite import Sprite, Group
 from pellet import Pellet
 from fruit import Fruit
 from barrier import Barrier
+from maps import Maps
 
 charMappings = {
-    '@': 'barrier',
-    '.': 'pellet',
-    '!': 'powerpellet',
-    '%': 'fruit',
+    '9': 'barrier',
+    '8': 'pellet',
+    '7': 'powerpellet',
+    '6': 'fruit',
     'P': 'pacman',
     ' ': 'space',
     '\n': 'newline',
-    '-': 'spawn',
-    '1': 'portal1',
-    '2': 'portal2'
+    '0': 'ghostspawn',
+    'X': 'portal1',
+    'Y': 'portal2'
 }
 
 
@@ -26,21 +27,10 @@ class Maze:
         self.pellets = Group()
         self.barriers = Group()
         self.fruits = Group()
-        self.currLife = life
-        self.currMaze = self.initMap(life=self.currLife)
+        self.mapChooser = Maps()
+        self.currMaze = self.mapChooser.loadMap()
         self.locations = dict()
         self.construct()
-
-    def initMap(self, life):
-        # Life indicates what life we are on, and what
-        # map to switch to
-        maze = list()
-        with open(f'maze{life}.txt') as fp:
-            rows = fp.readlines()
-            for currentLine in rows:
-                # REMOVE NEWLINES FROM THE LIST
-                maze.append(currentLine)
-        return maze
 
     def addElement(self, elt: str, col, row):
         if elt == 'barrier':
@@ -73,7 +63,7 @@ class Maze:
     def reset(self):
         self.barriers.empty()
         self.pellets.empty()
-        self.initMap(life=0)
+        self.currMaze = self.mapChooser.newMap()
 
     def update(self):
         self.pellets.update()

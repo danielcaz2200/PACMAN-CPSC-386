@@ -3,7 +3,7 @@ import pygame as pg
 
 
 class Vector():
-    # NOTE: this is not my code, credit to pacmancode.com/vectors
+    # NOTE: this is not our code, credit to pacmancode.com/vectors. This is only used for movement.
     def __init__(self, x, y):
         self.x, self.y = x, y
         self.thresh = 0.000001

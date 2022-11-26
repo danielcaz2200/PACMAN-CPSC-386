@@ -49,16 +49,16 @@ class Pacman(Sprite):
 
     def isValidMove(self):
         currX, currY = self.pos.x, self.pos.y
-        if self.dir == 'L' and self.maze[currY][currX-1] != '@':
+        if self.dir == 'L' and self.maze[currY][currX-1] != '9':
             self.timer = self.timers['L']
             return True
-        elif self.dir == 'R' and self.maze[currY][currX+1] != '@':
+        elif self.dir == 'R' and self.maze[currY][currX+1] != '9':
             self.timer = self.timers['R']
             return True
-        elif self.dir == 'U' and self.maze[currY-1][currX] != '@':
+        elif self.dir == 'U' and self.maze[currY-1][currX] != '9':
             self.timer = self.timers['U']
             return True
-        elif self.dir == 'D' and self.maze[currY+1][currX] != '@':
+        elif self.dir == 'D' and self.maze[currY+1][currX] != '9':
             self.timer = self.timers['D']
             return True
         else:
@@ -86,8 +86,6 @@ class Pacman(Sprite):
             self.game.score += self.settings.fruitScore
             self.game.sound.play_munch_pellet()
 
-        print(self.game.score)
-
     def update(self):
         if self.pos.x == self.locations['portal1'][0] - 1 and self.dir == 'L':
             self.pos.x = self.locations['portal2'][0]
@@ -99,20 +97,6 @@ class Pacman(Sprite):
         self.rect.left = self.pos.x * self.rect.width
         self.rect.top = self.pos.y * self.rect.height
         self.draw()
-
-    # def checkWallCollisions(self, prev):
-    #     collision = pg.sprite.spritecollideany(self, self.barriers)
-    #     if collision:
-    #         if self.dir == 'L':
-    #             self.pos = prev + Vec(0.5, 0)
-    #         elif self.dir == 'R':
-    #             self.pos = prev - Vec(0.5, 0)
-    #         elif self.dir == 'U':
-    #             self.pos = prev + Vec(0, 0.5)
-    #         elif self.dir == 'D':
-    #             self.pos = prev - Vec(0, 0.5)
-    #         self.rect.left = self.pos.x * self.rect.width
-    #         self.rect.top = self.pos.y * self.rect.height
 
     def draw(self):
         self.screen.blit(self.timer.imagerect(), self.rect)
