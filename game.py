@@ -1,6 +1,8 @@
 import pygame
 from settings import Settings
 from maze import Maze
+from player import Pacman
+from sound import Sound
 import game_functions as gf
 
 
@@ -19,12 +21,21 @@ class Game:
         self.maze = Maze(self)
 
         self.locations = self.maze.locations
+        self.keyPress = False
+        pacStart = self.maze.locations['pacman']
+        self.clock = pygame.time.Clock()
+        self.score = 0
+        self.pacman = Pacman(game=self, location=pacStart)
+        self.sound = Sound()
 
     def play(self):
+        self.sound.play_startup()
         while True:
-            gf.check_events(game=self, settings=self.settings)
+            gf.check_events(game=self, settings=self.settings,
+                            pacman=self.pacman)
             self.screen.fill(self.settings.bg)
             self.maze.update()
+            self.pacman.update()
             pygame.display.flip()
 
 

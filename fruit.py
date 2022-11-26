@@ -7,7 +7,8 @@ class Fruit(Sprite):
         super().__init__()
         self.screen = game.screen
         self.pts = game.settings.fruitScore
-        self.img = pg.image.load('images/fruit.png')
+        self.img = pg.transform.scale(
+            pg.image.load('images/fruit.png'), (30, 30))
         self.rect = self.img.get_rect()
         self.rect.left, self.rect.top = x * self.rect.width, y * self.rect.height
 

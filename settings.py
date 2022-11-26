@@ -2,7 +2,7 @@ class Settings():
     def __init__(self) -> None:
         """Setup the game settings"""
         self.bg = (0, 0, 0)
-        self.screenWidth = 900
+        self.screenWidth = 840
         self.screenHeight = 1000
         self.lives = 3
         self.fruitScore = 500
@@ -17,4 +17,3 @@ class Settings():
 
     def initialize_speed_settings(self) -> None:
         self.playerSpeed = 3
-        self.ghostSpeed = 3
