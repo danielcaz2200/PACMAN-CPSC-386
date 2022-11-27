@@ -26,18 +26,17 @@ class GameController(object):
         # To control menu
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
         self.mid_w, self.mid_h = self.screenSize[0] / 2, self.screenSize[1] / 2
-        self.startx, self.starty = self.mid_w, self.mid_h + 227
-        self.highscorex, self.highscorey = self.mid_w, self.mid_h + 50 + 205
-        self.exitx, self.exity = self.mid_w, self.mid_h + 70 + 215
+        self.startx, self.starty = self.mid_w, self.mid_h + 225
+        self.highscorex, self.highscorey = self.mid_w, self.mid_h + 255
+        self.exitx, self.exity = self.mid_w, self.mid_h + 285
         self.cursor_rect = pygame.Rect(0, 0, 20, 20)
-        self.offset = -100
+        self.offset = -105
         self.cursor_rect.midtop = (self.startx + self.offset, self.starty)
         self.state = 'Start'
         self.menu_timer = Timer(frames=menu_image_list, wait=250)
         self.image_position_menu_y = self.mid_h + 80
 
         # Highscores
-        self.highscorex, self.highscorey = self.mid_w, self.mid_h + 50 + 205
         self.highscoremenu = False
         self.highscore = None
         self.getHighScore()

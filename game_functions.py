@@ -14,13 +14,6 @@ directions = {
 }
 
 
-# def check_keyup_events(game, pacman, event, settings):
-#     key = event.key
-#     if key in validMoves:
-#         print('stop')
-#         pacman.dir = 'STOP'
-
-
 def check_keydown_events(game, pacman, event, settings):
     key = event.key  # Access key
     if key in validMoves:
@@ -41,6 +34,3 @@ def check_events(game, pacman, settings):
         elif event.type == pg.KEYDOWN:
             check_keydown_events(game=game, pacman=pacman,
                                  event=event, settings=settings)
-        # elif event.type == pg.KEYUP:
-        #     check_keyup_events(game=game, pacman=pacman,
-        #                        event=event, settings=settings)

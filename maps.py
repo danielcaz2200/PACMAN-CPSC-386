@@ -10,7 +10,7 @@ class Maps:
         with open(f'maps/maze{self.choice}.txt') as fp:
             rows = fp.readlines()
             for currentLine in rows:
-                # REMOVE NEWLINES FROM THE LIST
+                # Newlines handled in maze.py
                 maze.append(currentLine)
         return maze
 

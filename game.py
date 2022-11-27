@@ -24,7 +24,6 @@ class Game:
         self.locations = self.maze.locations
         self.keyPress = False
         pacStart = self.maze.locations['pacman']
-        self.clock = pygame.time.Clock()
         self.score = 0
         self.pacman = Pacman(game=self, location=pacStart)
         self.sound = Sound()
