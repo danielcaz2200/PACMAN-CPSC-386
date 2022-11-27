@@ -19,8 +19,8 @@ BACKSPACE - GO BACK <br />
 # In-Game Controls
 ARROW UP - UP <br />
 ARROW DOWN - DOWN <br />
-ENTER - SELECT <br />
-BACKSPACE - GO BACK <br />
+ARROW LEFT - LEFT <br />
+ARROW RIGHT - RIGHT <br />
 
 # Contributors
 1. Matthew Padden
