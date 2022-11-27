@@ -3,6 +3,7 @@ from settings import Settings
 from maze import Maze
 from player import Pacman
 from sound import Sound
+from menus import GameController
 import game_functions as gf
 
 
@@ -30,13 +31,20 @@ class Game:
 
     def play(self):
         self.sound.play_startup()
+        game = GameController()
+
         while True:
             gf.check_events(game=self, settings=self.settings,
                             pacman=self.pacman)
-            self.screen.fill(self.settings.bg)
-            self.maze.update()
-            self.pacman.update()
-            pygame.display.flip()
+            if game.menu:
+                game.main_menu()
+            elif game.highscoremenu:
+                game.highscore_menu()
+            else:
+                self.screen.fill(self.settings.bg)
+                self.maze.update()
+                self.pacman.update()
+                pygame.display.flip()
 
 
 if __name__ == '__main__':
