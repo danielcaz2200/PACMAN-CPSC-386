@@ -21,7 +21,7 @@ class GameController(object):
                            self.settings.screenHeight)
         self.screen = pygame.display.set_mode(self.screenSize)
         menu_image_list = [pygame.transform.scale(pygame.image.load(
-            f'images/chasing{n}.jpg'), (300, 80)) for n in range(2)]
+            f'images/chasing{n}.png'), (300, 80)) for n in range(16)]
 
         # To control menu
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
@@ -132,10 +132,10 @@ class GameController(object):
                 pygame.image.load('images/Pacman image.JPG'), (350, 150))
             self.draw_image(pacman_image, self.mid_w, 100)
 
-            self.draw_text('Play Game', 15, self.startx, 725)
-            self.draw_text('High Scores', 15,
+            self.draw_text('Play Game', 20, self.startx, 725)
+            self.draw_text('High Scores', 20,
                            self.highscorex, 755)
-            self.draw_text('Exit', 15, self.exitx, 785)
+            self.draw_text('Exit', 20, self.exitx, 785)
 
             self.draw_cursor()
 
@@ -155,23 +155,6 @@ class GameController(object):
             self.highscore = 0  # Default if high score does not exist
 
         return self.highscore
-
-    def updateScore(self, points):
-        """Updates game score"""
-        self.score += points
-
-        # Log high score
-        if self.score > self.highscore:
-            self.updateHighscore()
-
-        # self.textgroup.updateScore(self.score)
-
-    def updateHighscore(self):
-        """Updates highscore"""
-        self.highscore = self.score
-        with open('hiscore.txt', 'w') as f:
-            # Write new high score, if better than last
-            f.write(str(self.highscore))
 
     def get_highscore_string(self):
         curr_high_score = f'Current high score is {self.getHighScore()}'

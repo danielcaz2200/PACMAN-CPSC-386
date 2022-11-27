@@ -25,7 +25,7 @@ class Pacman(Sprite):
         self.rect.top = self.pos.y * self.rect.height
         self.last = pg.time.get_ticks()
         self.delay = 200
-        self.displayScore = GameController()
+        self.scores = GameController()
 
         pacman_frames_r = [pg.image.load(
             f'images/pacman_{i}.png') for i in range(3)]
@@ -75,6 +75,7 @@ class Pacman(Sprite):
 
         if pelletCollisions:
             self.game.score += self.settings.pelletScore
+            self.updateHighscore()
             self.game.sound.play_munch_pellet()
 
         fruitCollision = pg.sprite.spritecollide(
@@ -94,9 +95,20 @@ class Pacman(Sprite):
             self.checkCollisions()
         self.rect.left = self.pos.x * self.rect.width
         self.rect.top = self.pos.y * self.rect.height
-        self.displayScore.draw_text('SCORE ' + str(self.game.score).zfill(8), 20, 145, 960)
+        self.scores.draw_text('SCORE ' + str(self.game.score).zfill(8), 20, 145, 960)
+        self.scores.draw_text('HIGHSCORE ' + str(self.scores.highscore).zfill(8), 20, 650, 960)
+
 
         self.draw()
 
     def draw(self):
         self.screen.blit(self.timer.imagerect(), self.rect)
+
+    def updateHighscore(self):
+        """Updates highscore"""
+        # Log high score
+        if self.game.score > self.scores.highscore:
+            self.scores.highscore = self.game.score
+            with open('hiscore.txt', 'w') as f:
+                # Write new high score, if better than last
+                f.write(str(self.scores.highscore))
