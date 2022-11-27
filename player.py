@@ -96,9 +96,9 @@ class Pacman(Sprite):
         self.rect.left = self.pos.x * self.rect.width
         self.rect.top = self.pos.y * self.rect.height
         self.scores.draw_text(
-            'SCORE ' + str(self.game.score).zfill(8), 20, 145, 960)
+            'SCORE ' + str(self.game.score).zfill(8), 20, 145, 885)
         self.scores.draw_text(
-            'HIGHSCORE ' + str(self.scores.highscore).zfill(8), 20, 650, 960)
+            'HIGHSCORE ' + str(self.scores.highscore).zfill(8), 20, 600, 885)
 
         self.draw()
 

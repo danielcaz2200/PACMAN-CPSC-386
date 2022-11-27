@@ -3,7 +3,7 @@ class Settings():
         """Setup the game settings"""
         self.bg = (0, 0, 0)
         self.screenWidth = 780
-        self.screenHeight = 900
+        self.screenHeight = 910
         self.lives = 3
         self.spriteSize = (28, 28)
         self.fruitScore = 500

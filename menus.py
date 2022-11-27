@@ -21,7 +21,7 @@ class GameController(object):
                            self.settings.screenHeight)
         self.screen = pygame.display.set_mode(self.screenSize)
         menu_image_list = [pygame.transform.scale(pygame.image.load(
-            f'images/chasing{n}.JPG'), (300, 80)) for n in range(2)]
+            f'images/chasing{n}.png'), (600, 160)) for n in range(16)]
 
         # To control menu
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
@@ -132,10 +132,10 @@ class GameController(object):
                 pygame.image.load('images/Pacman image.JPG'), (350, 150))
             self.draw_image(pacman_image, self.mid_w, 100)
 
-            self.draw_text('Play Game', 20, self.startx, 725)
+            self.draw_text('Play Game', 20, self.startx, 675)
             self.draw_text('High Scores', 20,
-                           self.highscorex, 755)
-            self.draw_text('Exit', 20, self.exitx, 785)
+                           self.highscorex, 705)
+            self.draw_text('Exit', 20, self.exitx, 735)
 
             self.draw_cursor()
 
