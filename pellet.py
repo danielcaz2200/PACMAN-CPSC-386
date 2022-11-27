@@ -9,10 +9,10 @@ class Pellet(Sprite):
         self.pts = game.settings.pelletScore
         if type == 'pellet':
             self.img = pg.transform.scale(
-                pg.image.load('images/pellet.png'), (30, 30))
+                pg.image.load('images/pellet.png'), game.settings.spriteSize)
         elif type == 'powerpellet':
             self.img = pg.transform.scale(
-                pg.image.load('images/powerpellet.png'), (30, 30))
+                pg.image.load('images/powerpellet.png'), game.settings.spriteSize)
         self.rect = self.img.get_rect()
         self.rect.left, self.rect.top = x * self.rect.width, y * self.rect.height
 

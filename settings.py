@@ -2,9 +2,10 @@ class Settings():
     def __init__(self) -> None:
         """Setup the game settings"""
         self.bg = (0, 0, 0)
-        self.screenWidth = 840
-        self.screenHeight = 1000
+        self.screenWidth = 780
+        self.screenHeight = 900
         self.lives = 3
+        self.spriteSize = (28, 28)
         self.fruitScore = 500
         self.pelletScore = None
         self.powerPelletScore = None

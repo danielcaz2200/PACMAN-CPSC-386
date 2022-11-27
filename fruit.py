@@ -1,4 +1,5 @@
 from pygame.sprite import Sprite
+from random import choice
 import pygame as pg
 
 
@@ -7,8 +8,9 @@ class Fruit(Sprite):
         super().__init__()
         self.screen = game.screen
         self.pts = game.settings.fruitScore
+        image = choice(['images/fruit0.png', 'images/fruit1.png'])
         self.img = pg.transform.scale(
-            pg.image.load('images/fruit.png'), (30, 30))
+            pg.image.load(image), (game.settings.spriteSize))
         self.rect = self.img.get_rect()
         self.rect.left, self.rect.top = x * self.rect.width, y * self.rect.height
 

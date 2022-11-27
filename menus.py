@@ -21,7 +21,7 @@ class GameController(object):
                            self.settings.screenHeight)
         self.screen = pygame.display.set_mode(self.screenSize)
         menu_image_list = [pygame.transform.scale(pygame.image.load(
-            f'images/chasing{n}.png'), (300, 80)) for n in range(16)]
+            f'images/chasing{n}.JPG'), (300, 80)) for n in range(2)]
 
         # To control menu
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
