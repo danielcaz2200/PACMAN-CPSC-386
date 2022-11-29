@@ -6,7 +6,7 @@ from timer import Timer
 from menus import GameController
 
 
-class Ghost(Sprite):
+class Ghosts():
     def __init__(self, game, location: tuple) -> None:
         super().__init__()
         self.game = game
