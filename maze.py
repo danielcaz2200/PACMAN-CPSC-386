@@ -4,6 +4,7 @@ from pellet import Pellet
 from fruit import Fruit
 from barrier import Barrier
 from maps import Maps
+import ghosts
 
 charMappings = {
     '9': 'barrier',
@@ -13,7 +14,10 @@ charMappings = {
     'P': 'pacman',
     ' ': 'space',
     '\n': 'newline',
-    '0': 'ghostspawn',
+    '0': 'blinky',
+    '1': 'inky',
+    '2': 'pinky',
+    '3': 'clyde',
     'X': 'portal1',
     'Y': 'portal2'
 }
@@ -27,6 +31,7 @@ class Maze:
         self.pellets = Group()
         self.barriers = Group()
         self.fruits = Group()
+        self.ghosts = Group()
         self.mapChooser = Maps()
         self.currMaze = self.mapChooser.loadMap()
         self.locations = dict()
@@ -43,6 +48,14 @@ class Maze:
                 Pellet(game=self.game, x=col, y=row, type=elt))
         elif elt == 'fruit':
             self.fruits.add(Fruit(game=self.game, x=col, y=row))
+        elif elt == 'blinky':
+            self.ghosts.add(ghosts.Blinky(game=self.game, x=col, y=row))
+        elif elt == 'inky':
+            self.ghosts.add(ghosts.Inky(game=self.game, x=col, y=row))
+        elif elt == 'pinky':
+            self.ghosts.add(ghosts.Pinky(game=self.game, x=col, y=row))
+        elif elt == 'clyde':
+            self.ghosts.add(ghosts.Clyde(game=self.game, x=col, y=row))
         elif elt == 'portal1':
             self.locations['portal1'] = (col, row)
             print(self.locations['portal1'])
@@ -52,6 +65,7 @@ class Maze:
         elif elt == 'pacman':
             self.locations['pacman'] = (col, row)
             print(self.locations['pacman'])
+
 
     def construct(self):
         for row_num in range(len(self.currMaze)):
@@ -69,3 +83,4 @@ class Maze:
         self.pellets.update()
         self.barriers.update()
         self.fruits.update()
+        self.ghosts.update()
