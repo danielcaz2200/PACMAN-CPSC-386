@@ -1,7 +1,5 @@
 # CPSC-386-Pacman
-Pacman for 386 Intro to Game Design <br />
-This is a makeup project turned in late <br />
-Ghosts and portal gun are missing, other functionalities missing <br />
+An unfinished Pacman Project for 386 Intro to Game Design <br />
 
 # Know Before You Play
 The menu is controlled by the arrow keys. Press "Enter" to select and "Backspace" to go back.
