@@ -1,8 +1,9 @@
 # CPSC-386-Pacman
 An unfinished Pacman Project for 386 Intro to Game Design <br />
 
-![Screenshot_20230118_060203](https://user-images.githubusercontent.com/60197297/213338473-a9f0a007-c650-466a-a163-8e5b99d4ad88.png)
+![pacman-menu](https://user-images.githubusercontent.com/60197297/213340421-d9973c3d-7eaa-44d4-8036-2a1328927f4f.png)
 
+![pacman-gameplay](https://user-images.githubusercontent.com/60197297/213340777-55f7f252-5932-4ab6-8b0c-b3e4255c11ec.jpg)
 
 # Know Before You Play
 The menu is controlled by the arrow keys. Press "Enter" to select and "Backspace" to go back.
